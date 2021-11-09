@@ -3,6 +3,9 @@ package be.wikiformatter;
 //notFound is useless   -> remove
 //Previous is useless   -> remove
 //else is useless       -> remove
+//method NormalBuilder
+//method BoldBuilder
+//else is useless       -> remove
 
 public class WikiFormatter {
     String emptyString = "";
@@ -19,9 +22,6 @@ public class WikiFormatter {
 
                 if (part.length > 0) {
                     BoldBuilder(part);
-                }
-                else {
-                    part[i] = arrayOfStrings[i - 1];
                 }
             }
         }
