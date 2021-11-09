@@ -1,6 +1,7 @@
 package be.wikiformatter;
 
 //notFound is useless -> remove
+//Previous is useless -> remove
 
 public class WikiFormatter {
     public String format(String[] arrayOfStrings) {
@@ -14,36 +15,30 @@ public class WikiFormatter {
             else {
                 int i = strings.indexOf("*");
                 String[] part = strings.split("\\*");
-                //is previous useless?
+
                 if (part.length > 0) {
                     for (int j = 0; j < part.length; j++) {
 
-                        //is previous statement useless here because its always i-1
+                        //Opens <p>
                         if (j == 0) {
                             emptyString += "<p>";
                         }
 
-
+                        //Opens <b>
                         if (j % 2 == 1)
                             emptyString += "<b>";
 
-
+                        //puts the words in the empty array
                         if (j >= 0 && j < part.length) {
                             emptyString += part[j];
-
-
-                        }
-                        else {
-                            j = part.length;
-                            emptyString = part[j-1];
                         }
 
-
+                        //Closes <b>
                         if (j % 2 == 1) {
                             emptyString += "</b>";
                         }
 
-
+                        //Closes <p>
                         if (j >= part.length - 1)
                             emptyString += "</p>";
 
