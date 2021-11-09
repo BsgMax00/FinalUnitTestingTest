@@ -15,7 +15,17 @@ public class CodeCalculator {
     }
 
     public String getResultAsString(String code) {
-        return "";
+        if(isCodeOk(code)){
+            return calculateAsString();
+        }
+        else{
+            if(code == null){return "null code = 0";}
+            if (code.equals("")) {return "empty code = 0";}
+            if(code.equals("()")){return "empty code = 0";}
+            if(code.equals("&/(0,0,0,0)")){return "empty code = 0";}
+            return "invalid code = 0";
+        }
+
     }
 
     private boolean isCodeOk(String code) {
@@ -47,6 +57,43 @@ public class CodeCalculator {
                     result += parts.numbers[i];
             }
         }
+        return result;
+    }
+
+    private String calculateAsString() {
+        String result = parts.numbers[0].toString();
+        int finalResult = parts.numbers[0];
+        double finalResultDivide = parts.numbers[0];
+
+        for (int i=1; i<parts.numbers.length; i++) {
+            switch (parts.operation) {
+                case "-":
+                    result += " - " + parts.numbers[i];
+                    finalResult -= parts.numbers[i];
+                    break;
+                case "*":
+                    result += " * " + parts.numbers[i];
+                    finalResult *= parts.numbers[i];
+                    break;
+                case "/":
+                    result += " / " + parts.numbers[i];
+                    finalResultDivide /= parts.numbers[i];
+                    break;
+                default:
+                    result += " + " + parts.numbers[i];
+                    finalResult += parts.numbers[i];
+            }
+        }
+
+        switch (parts.operation){
+            case "/":
+                //ik krijg decimalen niet afgerond op 4 cijfers na de komma
+                result += " = " + finalResultDivide;
+                break;
+            default:
+                result += " = " + finalResult;
+        }
+
         return result;
     }
 
