@@ -1,16 +1,17 @@
 package be.wikiformatter;
 
-//notFound is useless -> remove
-//Previous is useless -> remove
+//notFound is useless   -> remove
+//Previous is useless   -> remove
+//else is useless       -> remove
 
 public class WikiFormatter {
+    String emptyString = "";
+
     public String format(String[] arrayOfStrings) {
-        String emptyString = "";
+
         for (String strings : arrayOfStrings) {
             if (!strings.contains("*")) {
-                emptyString += "<p>";
-                emptyString += strings;
-                emptyString += "</p>";
+                NormalBuilder(strings);
             }
             else {
                 int i = strings.indexOf("*");
@@ -49,6 +50,14 @@ public class WikiFormatter {
                 }
             }
         }
+        return emptyString;
+    }
+
+    public String NormalBuilder(String strings){
+        emptyString += "<p>";
+        emptyString += strings;
+        emptyString += "</p>";
+
         return emptyString;
     }
 
