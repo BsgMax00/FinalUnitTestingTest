@@ -7,6 +7,7 @@ package be.wikiformatter;
 //method BoldBuilder
 //else is useless       -> remove
 //if is useless         -> remove
+//in i is useless       -> remove
 
 public class WikiFormatter {
     String emptyString = "";
@@ -15,7 +16,7 @@ public class WikiFormatter {
 
         for (String strings : arrayOfStrings) {
             if (!strings.contains("*")) {
-                NormalBuilder(strings);
+                ParaghrafBuilder(strings);
             }
             else {
                 String[] part = strings.split("\\*");
@@ -25,7 +26,7 @@ public class WikiFormatter {
         return emptyString;
     }
 
-    public String NormalBuilder(String strings){
+    public String ParaghrafBuilder(String strings){
         emptyString += "<p>";
         emptyString += strings;
         emptyString += "</p>";
@@ -35,27 +36,13 @@ public class WikiFormatter {
 
     public String BoldBuilder(String[] part){
         for (int j = 0; j < part.length; j++) {
-            if (j == 0) {
-                emptyString += "<p>";
-            }
 
-            if (j % 2 == 1) {
-                emptyString += "<b>";
-            }
-
-            if (j >= 0 && j < part.length) {
-                emptyString += part[j];
-            }
-
-            if (j % 2 == 1) {
-                emptyString += "</b>";
-            }
-
-            if (j >= part.length - 1) {
-                emptyString += "</p>";
-            }
+            if (j == 0) { emptyString += "<p>"; }
+            if (j % 2 == 1) { emptyString += "<b>"; }
+            if (j >= 0 && j < part.length) { emptyString += part[j]; }
+            if (j % 2 == 1) { emptyString += "</b>"; }
+            if (j >= part.length - 1) { emptyString += "</p>"; }
         }
-
         return emptyString;
     }
 }
