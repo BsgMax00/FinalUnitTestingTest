@@ -18,32 +18,7 @@ public class WikiFormatter {
                 String[] part = strings.split("\\*");
 
                 if (part.length > 0) {
-                    for (int j = 0; j < part.length; j++) {
-
-                        //Opens <p>
-                        if (j == 0) {
-                            emptyString += "<p>";
-                        }
-
-                        //Opens <b>
-                        if (j % 2 == 1)
-                            emptyString += "<b>";
-
-                        //puts the words in the empty array
-                        if (j >= 0 && j < part.length) {
-                            emptyString += part[j];
-                        }
-
-                        //Closes <b>
-                        if (j % 2 == 1) {
-                            emptyString += "</b>";
-                        }
-
-                        //Closes <p>
-                        if (j >= part.length - 1)
-                            emptyString += "</p>";
-
-                    }
+                    BoldBuilder(part);
                 }
                 else {
                     part[i] = arrayOfStrings[i - 1];
@@ -61,4 +36,30 @@ public class WikiFormatter {
         return emptyString;
     }
 
+    public String BoldBuilder(String[] part){
+        for (int j = 0; j < part.length; j++) {
+
+            if (j == 0) {
+                emptyString += "<p>";
+            }
+
+            if (j % 2 == 1) {
+                emptyString += "<b>";
+            }
+
+            if (j >= 0 && j < part.length) {
+                emptyString += part[j];
+            }
+
+            if (j % 2 == 1) {
+                emptyString += "</b>";
+            }
+
+            if (j >= part.length - 1) {
+                emptyString += "</p>";
+            }
+        }
+
+        return emptyString;
+    }
 }
