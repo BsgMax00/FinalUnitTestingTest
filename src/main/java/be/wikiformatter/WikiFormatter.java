@@ -6,6 +6,7 @@ package be.wikiformatter;
 //method NormalBuilder
 //method BoldBuilder
 //else is useless       -> remove
+//if is useless         -> remove
 
 public class WikiFormatter {
     String emptyString = "";
@@ -17,9 +18,7 @@ public class WikiFormatter {
                 NormalBuilder(strings);
             }
             else {
-                int i = strings.indexOf("*");
                 String[] part = strings.split("\\*");
-
                 BoldBuilder(part);
             }
         }
@@ -36,7 +35,6 @@ public class WikiFormatter {
 
     public String BoldBuilder(String[] part){
         for (int j = 0; j < part.length; j++) {
-
             if (j == 0) {
                 emptyString += "<p>";
             }
