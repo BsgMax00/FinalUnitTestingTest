@@ -20,9 +20,7 @@ public class WikiFormatter {
                 int i = strings.indexOf("*");
                 String[] part = strings.split("\\*");
 
-                if (part.length > 0) {
-                    BoldBuilder(part);
-                }
+                BoldBuilder(part);
             }
         }
         return emptyString;
