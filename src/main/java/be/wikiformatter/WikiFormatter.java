@@ -8,15 +8,15 @@ package be.wikiformatter;
 //else is useless       -> remove
 //if is useless         -> remove
 //in i is useless       -> remove
+//code beautify
 
 public class WikiFormatter {
     String emptyString = "";
 
     public String format(String[] arrayOfStrings) {
-
         for (String strings : arrayOfStrings) {
             if (!strings.contains("*")) {
-                ParaghrafBuilder(strings);
+                NormalBuilder(strings);
             }
             else {
                 String[] part = strings.split("\\*");
@@ -26,7 +26,7 @@ public class WikiFormatter {
         return emptyString;
     }
 
-    public String ParaghrafBuilder(String strings){
+    public String NormalBuilder(String strings){
         emptyString += "<p>";
         emptyString += strings;
         emptyString += "</p>";
